@@ -1,4 +1,6 @@
 import { useReducer, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import { MovieContext, ThemeContext } from "./Context/Index";
 import Page from "./Page";
@@ -14,6 +16,7 @@ function App() {
       <ThemeContext.Provider value={{ darkMode, setDarkMood }}>
         <MovieContext.Provider value={{ state, dispatch }}>
           <Page />
+          <ToastContainer autoClose={2000} />
         </MovieContext.Provider>
       </ThemeContext.Provider>
     </>

@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 import { MovieContext } from "../Context/Index";
+import remove from "../assets/delete.svg";
 import check from "../assets/icons/checkout.svg";
 import { getImageUrl } from "../utils/cine-utils";
 
@@ -9,6 +11,9 @@ export default function CartDetails({ onClose }) {
     // setCartData(cartData.filter((item) => item.id !== movie.id));
     // setCartData(cartData.filter((item) => item.id !== movie.id));
     dispatch({ type: "REMOVE_FROM_CART", payload: movie.id });
+    toast.success("Removed from cart", {
+      position: "top-center",
+    });
   };
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -30,7 +35,7 @@ export default function CartDetails({ onClose }) {
                     </div>
                     <div onClick={() => handleRemove(movie)} className="flex justify-between gap-4 items-center">
                       <button className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white">
-                        <img className="w-5 h-5" src="./assets/delete.svg" alt="" />
+                        <img className="w-5 h-5" src={remove} alt="" />
                         <span className="max-md:hidden">Remove</span>
                       </button>
                     </div>

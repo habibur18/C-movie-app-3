@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 import { MovieContext } from "../Context/Index";
 import { getImageUrl } from "../utils/cine-utils";
 
@@ -24,7 +25,7 @@ export default function MovieDetailsModal({ movie, onClose }) {
       // setCartData([...cartData, movie]);
       dispatch({ type: "ADD_TO_CART", payload: movie });
     } else {
-      alert("Already added to cart");
+      toast.success("Already added to cart");
     }
   };
   return (
