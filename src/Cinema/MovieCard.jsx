@@ -8,18 +8,18 @@ export default function MovieCard({ movie }) {
   const { title, rating } = movie;
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const { cartData, setCartData } = useContext(MovieContext);
+  const { state, dispatch } = useContext(MovieContext);
   const handleAddToCart = (movie) => {
     // Add movie to cart
     // setCartData([...cartData, movie]);
-    const isExisted = cartData.some((item) => item.id === movie.id);
+    const isExisted = state.cartData.some((item) => item.id === movie.id);
     if (!isExisted) {
-      setCartData([...cartData, movie]);
+      // setCartData([...cartData, movie]);
+      dispatch({ type: "ADD_TO_CART", payload: movie });
     } else {
       alert("Already added to cart");
     }
   };
-  console.log(cartData);
   const handleModalClose = () => {
     setSelectedMovie(null);
     setShowModal(false);

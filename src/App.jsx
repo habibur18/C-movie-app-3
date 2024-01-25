@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <ThemeContext.Provider value={{ darkMode, setDarkMood }}>
-        <MovieContext.Provider value={{ cartData, setCartData }}>
+        <MovieContext.Provider value={{ state, dispatch }}>
           <Page />
         </MovieContext.Provider>
       </ThemeContext.Provider>

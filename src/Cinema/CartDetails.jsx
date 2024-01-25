@@ -4,10 +4,11 @@ import check from "../assets/icons/checkout.svg";
 import { getImageUrl } from "../utils/cine-utils";
 
 export default function CartDetails({ onClose }) {
-  const { cartData, setCartData } = useContext(MovieContext);
+  const { state, dispatch } = useContext(MovieContext);
   const handleRemove = (movie) => {
     // setCartData(cartData.filter((item) => item.id !== movie.id));
-    setCartData(cartData.filter((item) => item.id !== movie.id));
+    // setCartData(cartData.filter((item) => item.id !== movie.id));
+    dispatch({ type: "REMOVE_FROM_CART", payload: movie.id });
   };
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -15,9 +16,9 @@ export default function CartDetails({ onClose }) {
         <div className="bg-white shadow-md dark:bg-[#12141D] rounded-2xl overflow-hidden p-5 md:p-9">
           <h2 className="text-2xl lg:text-[30px] mb-10 font-bold">Your Carts</h2>
           <div className="space-y-8 lg:space-y-12 max-h-[450px] overflow-auto mb-10 lg:mb-14">
-            {cartData.length > 0 ? (
+            {state.cartData.length > 0 ? (
               <>
-                {cartData.map((movie) => (
+                {state.cartData.map((movie) => (
                   <div key={movie.id} className="grid grid-cols-[1fr_auto] gap-4">
                     <div className="flex items-center gap-4">
                       <img width="50" height="50" className="rounded overflow-hidden" src={getImageUrl(movie)} alt="" />

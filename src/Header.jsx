@@ -8,9 +8,8 @@ import ring from "./assets/ring.svg";
 import { default as cart } from "./assets/shopping-cart.svg";
 export default function Header() {
   const [showCart, setShowCart] = useState(false);
-  const { cartData } = useContext(MovieContext);
+  const { state } = useContext(MovieContext);
   const { darkMode, setDarkMood } = useContext(ThemeContext);
-  console.log(darkMode);
   return (
     <>
       {showCart && <CartDetails onClose={() => setShowCart(false)} />}
@@ -34,7 +33,7 @@ export default function Header() {
             <li>
               <a onClick={() => setShowCart(true)} className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block" href="#">
                 <img src={cart} width="24" height="24" alt="" />
-                {cartData.length > 0 && <span className="rounded-full absolute top-[-12px] left-[28px] bg-[#12CF6F] text-white text-center p-[2px] w-[30px] h-[30px]">{cartData.length}</span>}
+                {state.cartData.length > 0 && <span className="rounded-full absolute top-[-12px] left-[28px] bg-[#12CF6F] text-white text-center p-[2px] w-[30px] h-[30px]">{state.cartData.length}</span>}
               </a>
             </li>
           </ul>
